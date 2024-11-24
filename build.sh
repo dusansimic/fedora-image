@@ -2,10 +2,20 @@
 
 set -ouex pipefail
 
+function log_info() {
+  echo ""
+  echo "================================"
+  echo "  $1"
+  echo "================================"
+  echo ""
+}
+
 RELEASE="$(rpm -E %fedora)"
 
 
 ### Remove packages
+
+log_info "Remove packages"
 
 rpm-ostree override remove \
   gnome-software \
@@ -13,6 +23,8 @@ rpm-ostree override remove \
 
 
 ### Install packages
+
+log_info "Install packages"
 
 rpm-ostree install \
   ansible \
@@ -40,6 +52,8 @@ rpm-ostree install \
 
 ### Exchange
 
+log_info "Exchange packages"
+
 rpm-ostree override replace \
   --remove=nano-default-editor \
   vim-default-editor
@@ -47,4 +61,6 @@ rpm-ostree override replace \
 
 ### Enable daemons
 
-# systemctl enable docker.service
+log_info "Enable daemons"
+
+systemctl enable docker.service
