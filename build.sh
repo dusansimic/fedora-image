@@ -22,18 +22,16 @@ rpm-ostree override remove \
 
 log_info "Install packages"
 
-  # containerd.io \
-  # docker-buildx-plugin \
-  # docker-ce \
-  # docker-ce-cli \
-  # docker-compose-plugin \
-
-
   # packer \
   # vagrant
 rpm-ostree install \
   ansible \
   conda \
+  containerd.io \
+  docker-buildx-plugin \
+  docker-ce \
+  docker-ce-cli \
+  docker-compose-plugin \
   eza \
   fira-code-fonts \
   fish \
@@ -61,4 +59,4 @@ rpm-ostree override \
 
 log_info "Enable daemons"
 
-# systemctl enable docker.service
+systemctl enable docker.service
