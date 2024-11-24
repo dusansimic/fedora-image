@@ -27,6 +27,10 @@ log_info "Install packages"
   # docker-ce \
   # docker-ce-cli \
   # docker-compose-plugin \
+
+
+  # packer \
+  # vagrant
 rpm-ostree install \
   ansible \
   conda \
@@ -41,10 +45,8 @@ rpm-ostree install \
   mosh \
   neovim \
   NetworkManager-sstp \
-  packer \
   sushi \
-  tlp \
-  vagrant
+  tlp
 
 ### Exchange
 
