@@ -5,19 +5,46 @@ set -ouex pipefail
 RELEASE="$(rpm -E %fedora)"
 
 
+### Remove packages
+
+rpm-ostree override remove \
+  gnome-software \
+  gnome-tour
+
+
 ### Install packages
 
-# Packages can be installed from any enabled yum repo on the image.
-# RPMfusion repos are available by default in ublue main images
-# List of rpmfusion packages can be found here:
-# https://mirrors.rpmfusion.org/mirrorlist?path=free/fedora/updates/39/x86_64/repoview/index.html&protocol=https&redirect=1
+rpm-ostree install \
+  ansible \
+  conda \
+  containerd.io \
+  docker-buildx-plugin \
+  docker-ce \
+  docker-ce-cli \
+  docker-compose-plugin \
+  eza \
+  fira-code-fonts \
+  fish \
+  gh \
+  git-lfs \
+  gitflow \
+  gnome-backgrounds-extras \
+  gnome-console \
+  mosh \
+  neovim \
+  NetworkManager-sstp \
+  packer \
+  sushi \
+  tlp \
+  vagrant
 
-# this installs a package from fedora repos
-rpm-ostree install screen
+### Exchange
 
-# this would install a package from rpmfusion
-# rpm-ostree install vlc
+rpm-ostree override replace \
+  --remove=nano-default-editor \
+  vim-default-editor
 
-#### Example for enabling a System Unit File
 
-systemctl enable podman.socket
+### Enable daemons
+
+# systemctl enable docker.service
