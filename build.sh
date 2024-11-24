@@ -3,11 +3,7 @@
 set -ouex pipefail
 
 function log_info() {
-  echo ""
-  echo "================================"
-  echo "  $1"
-  echo "================================"
-  echo ""
+  echo "[INFO] $1"
 }
 
 RELEASE="$(rpm -E %fedora)"
@@ -26,14 +22,14 @@ rpm-ostree override remove \
 
 log_info "Install packages"
 
+  # containerd.io \
+  # docker-buildx-plugin \
+  # docker-ce \
+  # docker-ce-cli \
+  # docker-compose-plugin \
 rpm-ostree install \
   ansible \
   conda \
-  containerd.io \
-  docker-buildx-plugin \
-  docker-ce \
-  docker-ce-cli \
-  docker-compose-plugin \
   eza \
   fira-code-fonts \
   fish \
@@ -63,4 +59,4 @@ rpm-ostree override replace \
 
 log_info "Enable daemons"
 
-systemctl enable docker.service
+# systemctl enable docker.service
