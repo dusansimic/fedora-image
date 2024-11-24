@@ -52,9 +52,9 @@ rpm-ostree install \
 
 log_info "Exchange packages"
 
-rpm-ostree override replace \
-  --remove=nano-default-editor \
-  vim-default-editor
+rpm-ostree override \
+  remove nano-default-editor \
+  --install vim-default-editor
 
 
 ### Enable daemons
