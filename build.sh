@@ -22,8 +22,6 @@ rpm-ostree override remove \
 
 log_info "Install packages"
 
-  # packer \
-  # vagrant
 rpm-ostree install \
   ansible \
   conda \
@@ -44,7 +42,9 @@ rpm-ostree install \
   neovim \
   NetworkManager-sstp \
   sushi \
-  tlp
+  tlp \
+  packer \
+  vagrant
 
 ### Exchange
 
