@@ -43,8 +43,8 @@ rpm-ostree install \
   NetworkManager-sstp \
   sushi \
   tlp \
-  packer \
-  vagrant
+  VirtualBox \
+  VirtualBox-extpack
 
 ### Exchange
 
