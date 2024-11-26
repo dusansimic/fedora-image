@@ -8,6 +8,13 @@ function log_info() {
 
 RELEASE="$(rpm -E %fedora)"
 
+### RPMFusion
+
+log_info "Add RPMFusion free and non-free"
+rpm-ostree install \
+  https://mirrors.rpmfusion.org/free/fedora/rpmfusion-free-release-41.noarch.rpm \
+  https://mirrors.rpmfusion.org/nonfree/fedora/rpmfusion-nonfree-release-41.noarch.rpm
+
 
 ### Remove packages
 
