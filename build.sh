@@ -27,31 +27,52 @@ rpm-ostree override remove \
 
 ### Install packages
 
-log_info "Install packages"
+log_info "Install console tools"
 
 rpm-ostree install \
-  ansible \
-  conda \
-  containerd.io \
-  docker-buildx-plugin \
-  docker-ce \
-  docker-ce-cli \
-  docker-compose-plugin \
   eza \
-  fira-code-fonts \
   fish \
   gh \
   git-lfs \
   gitflow \
+  mosh \
+  conda \
+  ansible
+
+
+log_info "Install docker"
+
+rpm-ostree install \
+  containerd.io \
+  docker-buildx-plugin \
+  docker-ce \
+  docker-ce-cli \
+  docker-compose-plugin
+
+
+log_info "Install misc. packages"
+
+rpm-ostree install \
+  fira-code-fonts \
   gnome-backgrounds-extras \
   gnome-console \
-  mosh \
-  neovim \
   NetworkManager-sstp \
   sushi \
-  tlp \
+  tlp
+
+
+log_info "Install VirtualBox"
+
+rpm-ostree install \
   VirtualBox \
   VirtualBox-extpack
+
+
+log_info "Install additional file managers"
+
+rpm-ostree install \
+  gnome-commander \
+  krusader
 
 ### Exchange
 
