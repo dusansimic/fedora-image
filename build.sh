@@ -13,8 +13,10 @@ rpm-ostree install \
 ### Remove packages
 
 rpm-ostree override remove \
-  gnome-software \
-  gnome-tour
+  gnome-tour \
+  gnome-terminal \
+  gnome-terminal-nautilus \
+  power-profile-daemon
 
 ### Install packages
 
