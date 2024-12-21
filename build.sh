@@ -49,10 +49,10 @@ rpm-ostree install \
 rpm-ostree install \
   gnome-commander
 
-rpm-ostree install \
-  terraform \
-  packer \
-  vagrant
+# rpm-ostree install \
+#   terraform \
+#   packer \
+#   vagrant
 
 ### Exchange
 
