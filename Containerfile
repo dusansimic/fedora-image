@@ -37,11 +37,14 @@ ARG SOURCE_SUFFIX="-main"
 
 ## SOURCE_TAG arg must be a version built for the specific image: eg, 39, 40, gts, latest
 ARG SOURCE_TAG="latest"
+ARG FEDORA_RELEASE="41"
 
 
 ### 2. SOURCE IMAGE
 ## this is a standard Containerfile FROM using the build ARGs above to select the right upstream image
 FROM ghcr.io/ublue-os/${SOURCE_IMAGE}${SOURCE_SUFFIX}:${SOURCE_TAG}
+
+FROM ghcr.io/ublue-os/akmods-extra:main-${FEDORA_RELEASE} AS akmods-extra
 
 
 ### 3. MODIFICATIONS
@@ -50,10 +53,12 @@ FROM ghcr.io/ublue-os/${SOURCE_IMAGE}${SOURCE_SUFFIX}:${SOURCE_TAG}
 
 COPY repos/* /etc/yum.repos.d/
 
-COPY build.sh /tmp/build.sh
+COPY build.sh cleanup.sh /tmp/
 
-RUN mkdir -p /var/lib/alternatives && \
+RUN --mount=type=bind,from=akmods-extra,src=/rpms/ublue-os,dst=/tmp/akmods-extra-rpms \
+    mkdir -p /var/lib/alternatives && \
     /tmp/build.sh && \
+    /tmp/cleanup.sh && \
     ostree container commit
 ## NOTES:
 # - /var/lib/alternatives is required to prevent failure with some RPM installs

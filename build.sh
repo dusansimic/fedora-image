@@ -4,6 +4,11 @@ set -ouex pipefail
 
 RELEASE="$(rpm -E %fedora)"
 
+### akmods extra
+
+rpm-ostree install \
+  /tmp/akmods-extra-repos/*.rpm
+
 ### RPMFusion
 
 rpm-ostree install \
