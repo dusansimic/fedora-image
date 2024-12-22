@@ -42,9 +42,8 @@ ARG FEDORA_RELEASE="41"
 
 ### 2. SOURCE IMAGE
 ## this is a standard Containerfile FROM using the build ARGs above to select the right upstream image
+FROM ghcr.io/ublue-os/akmods-extra:main-${FEDORA_RELEASE} AS akmods
 FROM ghcr.io/ublue-os/${SOURCE_IMAGE}${SOURCE_SUFFIX}:${SOURCE_TAG}
-
-FROM ghcr.io/ublue-os/akmods-extra:main-${FEDORA_RELEASE} AS akmods-extra
 
 
 ### 3. MODIFICATIONS
@@ -55,7 +54,7 @@ COPY repos/* /etc/yum.repos.d/
 
 COPY build.sh cleanup.sh /tmp/
 
-RUN --mount=type=bind,from=akmods-extra,src=/rpms/ublue-os,dst=/tmp/akmods-extra-rpms \
+RUN --mount=type=bind,from=akmods,src=/rpms/ublue-os,dst=/tmp/akmods-rpms \
     mkdir -p /var/lib/alternatives && \
     /tmp/build.sh && \
     /tmp/cleanup.sh && \
