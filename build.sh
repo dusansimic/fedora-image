@@ -7,7 +7,7 @@ RELEASE="$(rpm -E %fedora)"
 ### akmods extra
 
 rpm-ostree install \
-  /tmp/akmods-repos/*.rpm
+  /tmp/akmods-rpms/*.rpm
 
 ### RPMFusion
 
