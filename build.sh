@@ -4,11 +4,6 @@ set -ouex pipefail
 
 RELEASE="$(rpm -E %fedora)"
 
-### akmods extra
-
-rpm-ostree install \
-  /tmp/akmods-rpms/kmod-VirtualBox*.rpm
-
 ### RPMFusion
 
 rpm-ostree install \
@@ -49,7 +44,8 @@ rpm-ostree install \
 
 rpm-ostree install \
   VirtualBox \
-  VirtualBox-extpack
+  VirtualBox-extpack \
+  akmod-VirtualBox
 
 rpm-ostree install \
   gnome-commander
