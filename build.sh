@@ -6,6 +6,9 @@ RELEASE="$(rpm -E %fedora)"
 
 ### akmods extra
 
+ls /tmp/akmods-rpms
+ls /tmp/akmods-rpms/*
+
 rpm-ostree install \
   /tmp/akmods-rpms/*.rpm
 
