@@ -2,7 +2,6 @@
   "all": {
     "include": {
       "all": [
-        // general cli
         "eza",
         "fish",
         "gh",
@@ -11,22 +10,18 @@
         "mosh",
         "conda",
         "ansible",
-        // docker
         "containerd.io",
         "docker-ce",
         "docker-ce-cli",
         "docker-buildx-plugin",
         "docker-compose-plugin",
-        // gnome
         "fira-code-fonts",
         "gnome-console",
         "NetworkManager-sstp",
         "sushi",
         "tlp",
-        // vbox
         "VirtualBox",
         "VirtualBox-extpack",
-        // editor
         "vim-default-editor"
       ]
     },
