@@ -4,11 +4,11 @@ set -ouex pipefail
 
 # build list of all packages requested for inclusion
 INCLUDED_PACKAGES=($(jq -r "[(.all.include | (select(.all != null).all)[])] \
-                    | sort | unique[]" /tmp/packages.jsonc))
+                    | sort | unique[]" /tmp/packages.json))
 
 # build list of all packages requested for exclusion
 EXCLUDED_PACKAGES=($(jq -r "[(.all.exclude | (select(.all != null).all)[])] \
-                    | sort | unique[]" /tmp/packages.jsonc))
+                    | sort | unique[]" /tmp/packages.json))
 
 # store a list of RPMs installed on the image
 INSTALLED_EXCLUDED_PACKAGES=()
