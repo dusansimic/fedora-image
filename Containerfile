@@ -54,7 +54,8 @@ COPY repos/* /etc/yum.repos.d/
 
 COPY build.sh cleanup.sh /tmp/
 
-RUN --mount=type=bind,from=akmods,src=/rpms/kmods,dst=/tmp/akmods-rpms \
+RUN --mount=type=cache,dst=/var/cache/rpm-ostree \
+    --mount=type=bind,from=akmods,src=/rpms/kmods,dst=/tmp/akmods-rpms \
     mkdir -p /var/lib/alternatives && \
     /tmp/build.sh && \
     /tmp/cleanup.sh && \
