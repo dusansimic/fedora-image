@@ -18,6 +18,9 @@ rpm-ostree override remove \
 ### Install packages
 
 rpm-ostree install \
+  /tmp/akmods-rpms/kmod-VirtualBox*.rpm
+
+rpm-ostree install \
   eza \
   fish \
   gh \
@@ -44,8 +47,7 @@ rpm-ostree install \
 
 rpm-ostree install \
   VirtualBox \
-  VirtualBox-extpack \
-  akmod-VirtualBox
+  VirtualBox-extpack
 
 rpm-ostree install \
   gnome-commander
