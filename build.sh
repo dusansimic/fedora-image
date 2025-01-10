@@ -2,25 +2,16 @@
 
 set -ouex pipefail
 
-RELEASE="$(rpm -E %fedora)"
+export VARIANT="main"
+export RELEASE="$(rpm -E %fedora)"
+export KERNEL="$(uname -r)"
 
-### RPMFusion
+/tmp/scripts/01_install_repos.sh
 
-rpm-ostree install \
-  https://mirrors.rpmfusion.org/free/fedora/rpmfusion-free-release-$RELEASE.noarch.rpm \
-  https://mirrors.rpmfusion.org/nonfree/fedora/rpmfusion-nonfree-release-$RELEASE.noarch.rpm
+/tmp/scripts/02_install_kernels.sh
 
+/tmp/scripts/03_install_akmods.sh
 
-rpm-ostree install \
-  /tmp/akmods-rpms/kmod-VirtualBox*.rpm
+/tmp/scripts/04_install_packages.sh
 
-/tmp/packages.sh
-
-# rpm-ostree install \
-#   terraform \
-#   packer \
-#   vagrant
-
-### Enable daemons
-
-systemctl enable docker.service
+/tmp/scripts/05_enable_services.sh

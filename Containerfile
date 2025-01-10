@@ -53,9 +53,9 @@ FROM ghcr.io/ublue-os/${SOURCE_IMAGE}${SOURCE_SUFFIX}:${SOURCE_TAG}
 COPY repos/* /etc/yum.repos.d/
 
 COPY build.sh cleanup.sh packages.sh packages.json /tmp/
+COPY scripts/ /tmp/
 
 RUN --mount=type=cache,dst=/var/cache/rpm-ostree \
-    --mount=type=bind,from=akmods,src=/rpms/kmods,dst=/tmp/akmods-rpms \
     mkdir -p /var/lib/alternatives && \
     /tmp/build.sh && \
     /tmp/cleanup.sh && \
