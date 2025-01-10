@@ -4,7 +4,7 @@ set -ouex pipefail
 
 export VARIANT="main"
 export RELEASE="$(rpm -E %fedora)"
-export KERNEL="$(uname -r)"
+export KERNEL="$(rpm -q kernel | sed 's~kernel-~~')"
 
 /tmp/scripts/01_install_repos.sh
 
