@@ -35,7 +35,8 @@
         "qemu",
         "virt-manager",
         "virt-viewer",
-        "virt-v2v"
+        "virt-v2v",
+        "vagrant"
       ]
     },
     "exclude": {
