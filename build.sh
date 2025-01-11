@@ -15,3 +15,5 @@ export KERNEL="$(rpm -q kernel | sed 's~kernel-~~')"
 /ctx/scripts/04_install_packages.sh
 
 /ctx/scripts/05_enable_services.sh
+
+/ctx/scripts/06_configure_signing.sh
