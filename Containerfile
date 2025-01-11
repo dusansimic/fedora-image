@@ -42,7 +42,13 @@ ARG FEDORA_RELEASE="41"
 
 ### 2. SOURCE IMAGE
 ## this is a standard Containerfile FROM using the build ARGs above to select the right upstream image
-FROM ghcr.io/ublue-os/akmods-extra:main-${FEDORA_RELEASE} AS akmods
+
+## Create a context image containing all the files from the context directory
+FROM scratch AS ctx
+
+COPY / /
+
+## Create the target image
 FROM ghcr.io/ublue-os/${SOURCE_IMAGE}${SOURCE_SUFFIX}:${SOURCE_TAG}
 
 
@@ -50,15 +56,11 @@ FROM ghcr.io/ublue-os/${SOURCE_IMAGE}${SOURCE_SUFFIX}:${SOURCE_TAG}
 ## make modifications desired in your image and install packages by modifying the build.sh script
 ## the following RUN directive does all the things required to run "build.sh" as recommended.
 
-COPY repos/* /etc/yum.repos.d/
-
-COPY build.sh cleanup.sh packages.sh packages.json /tmp/
-COPY scripts/ /tmp/scripts/
-
 RUN --mount=type=cache,dst=/var/cache/rpm-ostree \
+    --mount=type=bind,from=ctx,src=/,dst=/ctx \
     mkdir -p /var/lib/alternatives && \
-    /tmp/build.sh && \
-    /tmp/cleanup.sh && \
+    /ctx/build.sh && \
+    /ctx/cleanup.sh && \
     ostree container commit
 ## NOTES:
 # - /var/lib/alternatives is required to prevent failure with some RPM installs

@@ -6,12 +6,12 @@ export VARIANT="main"
 export RELEASE="$(rpm -E %fedora)"
 export KERNEL="$(rpm -q kernel | sed 's~kernel-~~')"
 
-/tmp/scripts/01_install_repos.sh
+/ctx/scripts/01_install_repos.sh
 
-/tmp/scripts/02_install_kernels.sh
+/ctx/scripts/02_install_kernels.sh
 
-/tmp/scripts/03_install_akmods.sh
+/ctx/scripts/03_install_akmods.sh
 
-/tmp/scripts/04_install_packages.sh
+/ctx/scripts/04_install_packages.sh
 
-/tmp/scripts/05_enable_services.sh
+/ctx/scripts/05_enable_services.sh

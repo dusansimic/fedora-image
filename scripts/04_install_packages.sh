@@ -2,4 +2,4 @@
 
 set -ouex pipefail
 
-/tmp/packages.sh
+/ctx/packages.sh
