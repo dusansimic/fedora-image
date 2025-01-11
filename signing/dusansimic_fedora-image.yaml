@@ -1,0 +1,3 @@
+docker:
+  ghcr.io/dusansimic/fedora-image:
+    use-sigstore-attachments: true
