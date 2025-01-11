@@ -23,7 +23,7 @@ cat <<<"$(jq '.transports.docker |=. + {
 ]}' <"/etc/containers/policy.json")" >"/tmp/policy.json"
 cp /tmp/policy.json /etc/containers/policy.json
 cp /ctx/cosign.pub /etc/pki/containers/dusansimic_fedora-image.pub
-cp /ctx/signing/dusansimic_fedora-image.pub /etc/pki/containers/dusansimic_fedora-image.pub
+cp /ctx/signing/dusansimic_fedora-image.yaml /etc/containers/registries.d/dusansimic_fedora-image.yaml
 
 mkdir -p /usr/etc/containers/
 cp /etc/containers/policy.json /usr/etc/containers/policy.json
