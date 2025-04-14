@@ -3,43 +3,18 @@
 set -ouex pipefail
 
 # build list of all packages requested for inclusion
-INCLUDED_PACKAGES=($(jq -r "[(.all.include | (select(.all != null).all)[])] \
-                    | sort | unique[]" /ctx/packages.json))
+readarray -t INCLUDED_PACKAGES < <(jq -r "[(.all.include | (select(.all != null).all)[]) \
+                                  | sort | unique[]" /ctx/packages.json)
+
+if [[ "${#INCLUDED_PACKAGES[@]}" -gt 0 && "${#INSTALLED_EXCLUDED_PACKAGES[@]}" -eq 0 ]]; then
+    dnf5 -y install "${INCLUDED_PACKAGES[@]}"
+fi
 
 # build list of all packages requested for exclusion
-EXCLUDED_PACKAGES=($(jq -r "[(.all.exclude | (select(.all != null).all)[])] \
-                    | sort | unique[]" /ctx/packages.json))
-
-# store a list of RPMs installed on the image
-INSTALLED_EXCLUDED_PACKAGES=()
-
-# ensure exclusion list only contains packages already present on image
-if [[ "${#EXCLUDED_PACKAGES[@]}" -gt 0 ]]; then
-    INSTALLED_EXCLUDED_PACKAGES=($(rpm -qa --queryformat='%{NAME} ' ${EXCLUDED_PACKAGES[@]}))
-fi
-
-# simple case to install where no packages need excluding
-if [[ "${#INCLUDED_PACKAGES[@]}" -gt 0 && "${#INSTALLED_EXCLUDED_PACKAGES[@]}" -eq 0 ]]; then
-    rpm-ostree install \
-        ${INCLUDED_PACKAGES[@]}
-
-# install/excluded packages both at same time
-elif [[ "${#INCLUDED_PACKAGES[@]}" -gt 0 && "${#INSTALLED_EXCLUDED_PACKAGES[@]}" -gt 0 ]]; then
-    rpm-ostree override remove \
-        ${INSTALLED_EXCLUDED_PACKAGES[@]} \
-        $(printf -- "--install=%s " ${INCLUDED_PACKAGES[@]})
-else
-    echo "No packages to install."
-fi
-
-# check if any excluded packages are still present
-# (this can happen if an included package pulls in a dependency)
-if [[ "${#EXCLUDED_PACKAGES[@]}" -gt 0 ]]; then
-    INSTALLED_EXCLUDED_PACKAGES=($(rpm -qa --queryformat='%{NAME} ' ${EXCLUDED_PACKAGES[@]}))
-fi
+readarray -t EXCLUDED_PACKAGES < <(jq -r "[(.all.exclude | (select(.all != null).all)[])] \
+                    | sort | unique[]" /ctx/packages.json)
 
 # remove any excluded packages which are still present on image
-if [[ "${#INSTALLED_EXCLUDED_PACKAGES[@]}" -gt 0 ]]; then
-    rpm-ostree override remove \
-        ${INSTALLED_EXCLUDED_PACKAGES[@]}
+if [[ "${#EXCLUDED_PACKAGES[@]}" -gt 0 ]]; then
+    dnf5 -y remove "${INSTALLED_EXCLUDED_PACKAGES[@]}"
 fi
