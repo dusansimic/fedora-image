@@ -7,7 +7,7 @@ readarray -t INCLUDED_PACKAGES < <(jq -r "[(.all.include | (select(.all != null)
                     | sort | unique[]" /ctx/packages.json)
 
 if [[ "${#INCLUDED_PACKAGES[@]}" -gt 0 ]]; then
-    dnf5 -y install --allow-erasing "${INCLUDED_PACKAGES[@]}"
+    dnf5 -y install --allowerasing "${INCLUDED_PACKAGES[@]}"
 fi
 
 # build list of all packages requested for exclusion
