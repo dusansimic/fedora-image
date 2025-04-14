@@ -6,7 +6,7 @@ set -ouex pipefail
 readarray -t INCLUDED_PACKAGES < <(jq -r "[(.all.include | (select(.all != null).all)[])] \
                     | sort | unique[]" /ctx/packages.json)
 
-if [[ "${#INCLUDED_PACKAGES[@]}" -gt 0 && "${#INSTALLED_EXCLUDED_PACKAGES[@]}" -eq 0 ]]; then
+if [[ "${#INCLUDED_PACKAGES[@]}" -gt 0 ]]; then
     dnf5 -y install "${INCLUDED_PACKAGES[@]}"
 fi
 
