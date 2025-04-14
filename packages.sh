@@ -3,8 +3,8 @@
 set -ouex pipefail
 
 # build list of all packages requested for inclusion
-readarray -t INCLUDED_PACKAGES < <(jq -r "[(.all.include | (select(.all != null).all)[]) \
-                                  | sort | unique[]" /ctx/packages.json)
+readarray -t INCLUDED_PACKAGES < <(jq -r "[(.all.include | (select(.all != null).all)[])] \
+                    | sort | unique[]" /ctx/packages.json)
 
 if [[ "${#INCLUDED_PACKAGES[@]}" -gt 0 && "${#INSTALLED_EXCLUDED_PACKAGES[@]}" -eq 0 ]]; then
     dnf5 -y install "${INCLUDED_PACKAGES[@]}"
