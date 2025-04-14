@@ -16,5 +16,5 @@ readarray -t EXCLUDED_PACKAGES < <(jq -r "[(.all.exclude | (select(.all != null)
 
 # remove any excluded packages which are still present on image
 if [[ "${#EXCLUDED_PACKAGES[@]}" -gt 0 ]]; then
-    dnf5 -y remove "${INSTALLED_EXCLUDED_PACKAGES[@]}"
+    dnf5 -y remove "${EXCLUDED_PACKAGES[@]}"
 fi
