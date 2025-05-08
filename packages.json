@@ -36,7 +36,8 @@
         "virt-manager",
         "virt-viewer",
         "virt-v2v",
-        "keyd"
+        "keyd",
+        "fira-code-nerd-fonts"
       ]
     },
     "exclude": {

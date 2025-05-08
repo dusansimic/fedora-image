@@ -1,0 +1,10 @@
+[copr:copr.fedorainfracloud.org:aquacash5:nerd-fonts]
+name=Copr repo for nerd-fonts owned by aquacash5
+baseurl=https://download.copr.fedorainfracloud.org/results/aquacash5/nerd-fonts/fedora-$releasever-$basearch/
+type=rpm-md
+skip_if_unavailable=True
+gpgcheck=1
+gpgkey=https://download.copr.fedorainfracloud.org/results/aquacash5/nerd-fonts/pubkey.gpg
+repo_gpgcheck=0
+enabled=1
+enabled_metadata=1
