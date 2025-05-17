@@ -38,4 +38,4 @@ TGZ_FILE=$(mktemp /tmp/XXXXXXXX.tgz)
 
 curl --fail --retry 5 --retry-delay 5 --retry-all-errors -sL ${TGZ_URLS} -o ${TGZ_FILE}
 
-tar -xzf ${TGZ_FILE} --strip-components=1 -C /usr/local/bin
+tar -xzf ${TGZ_FILE} --strip-components=1 -C /usr/bin
