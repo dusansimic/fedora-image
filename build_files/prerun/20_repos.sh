@@ -2,9 +2,7 @@
 
 set -ouex pipefail
 
-RELEASE="$(rpm -E %fedora)"
-
-cp /ctx/repos/* /etc/yum.repos.d/
+### Install repository packages
 
 dnf5 -y install \
   https://mirrors.rpmfusion.org/free/fedora/rpmfusion-free-release-$RELEASE.noarch.rpm \
