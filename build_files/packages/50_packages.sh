@@ -45,7 +45,8 @@ dnf5 -y install --allowerasing \
   virt-v2v \
   keyd \
   fira-code-fonts \
-  awscli2
+  awscli2 \
+  s3cmd
 
 # Remove packaages
 dnf5 -y remove \
