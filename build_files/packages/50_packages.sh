@@ -44,7 +44,8 @@ dnf5 -y install --allowerasing \
   virt-viewer \
   virt-v2v \
   keyd \
-  fira-code-fonts
+  fira-code-fonts \
+  awscli2
 
 # Remove packaages
 dnf5 -y remove \
