@@ -30,6 +30,7 @@ dnf5 -y install --allowerasing \
   tlp \
   VirtualBox \
   VirtualBox-extpack \
+  akmod-VirtualBox \
   vim-default-editor \
   qemu-char-spice \
   qemu-device-display-virtio-gpu \
@@ -46,7 +47,8 @@ dnf5 -y install --allowerasing \
   keyd \
   fira-code-fonts \
   awscli2 \
-  s3cmd
+  s3cmd \
+  opentofu
 
 # Remove packaages
 dnf5 -y remove \
