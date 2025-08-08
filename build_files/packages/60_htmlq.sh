@@ -10,7 +10,7 @@ curl --fail --retry 5 --retry-delay 5 --retry-all-errors -L -o /tmp/htmlq.tar.gz
 
 # Extract and install
 mkdir -p /tmp/htmlq
-tar -xzf /tmp/htmlq.tar.gz -C /tmp/htmlq --strip-components 1
+tar -xzf /tmp/htmlq.tar.gz -C /tmp/htmlq
 chmod +x /tmp/htmlq/htmlq
 install -Dm755 /tmp/htmlq/htmlq -t /usr/local/bin
 
