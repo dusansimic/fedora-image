@@ -12,7 +12,7 @@ curl --fail --retry 5 --retry-delay 5 --retry-all-errors -L -o /tmp/htmlq.tar.gz
 mkdir -p /tmp/htmlq
 tar -xzf /tmp/htmlq.tar.gz -C /tmp/htmlq
 chmod +x /tmp/htmlq/htmlq
-install -Dm755 /tmp/htmlq/htmlq -t /usr/local/bin
+install -Dm755 /tmp/htmlq/htmlq -t /usr/bin
 
 # Cleanup
 rm -rf /tmp/htmlq /tmp/htmlq.tar.gz
