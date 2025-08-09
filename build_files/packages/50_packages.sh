@@ -30,7 +30,6 @@ dnf5 -y install --allowerasing \
   tlp \
   VirtualBox \
   VirtualBox-extpack \
-  akmod-VirtualBox \
   vim-default-editor \
   qemu-char-spice \
   qemu-device-display-virtio-gpu \
