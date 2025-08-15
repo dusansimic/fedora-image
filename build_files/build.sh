@@ -5,6 +5,7 @@ set -ouex pipefail
 export VARIANT="main"
 export RELEASE="$(rpm -E %fedora)"
 export KERNEL="$(rpm -q kernel | sed 's~kernel-~~')"
+export ARCH="$(uname -m)"
 
 # copy system files
 rsync -rvK /ctx/sys_files/ /
