@@ -47,7 +47,10 @@ dnf5 -y install --allowerasing \
   fira-code-fonts \
   awscli2 \
   s3cmd \
-  opentofu
+  opentofu \
+  java-latest-openjdk \
+  java-21-openjdk \
+  java-17-openjdk
 
 # Remove packaages
 dnf5 -y remove \
