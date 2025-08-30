@@ -49,8 +49,7 @@ dnf5 -y install --allowerasing \
   s3cmd \
   opentofu \
   java-latest-openjdk \
-  java-21-openjdk \
-  java-17-openjdk
+  java-21-openjdk
 
 # Remove packaages
 dnf5 -y remove \
