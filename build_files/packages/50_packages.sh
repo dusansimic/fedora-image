@@ -49,9 +49,11 @@ dnf5 -y install --allowerasing \
   s3cmd \
   opentofu \
   java-latest-openjdk \
-  java-21-openjdk
+  java-21-openjdk \
+  python3-wxpython4 \
+  pipx
 
-# Remove packaages
+# Remove packages
 dnf5 -y remove \
   gnome-tour \
   nano-default-editor \
