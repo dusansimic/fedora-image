@@ -51,7 +51,8 @@ dnf5 -y install --allowerasing \
   java-latest-openjdk \
   java-21-openjdk \
   python3-wxpython4 \
-  pipx
+  pipx \
+  wireshark
 
 # Remove packages
 dnf5 -y remove \
