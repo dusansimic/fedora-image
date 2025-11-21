@@ -40,7 +40,8 @@ dnf5 -y install --allowerasing \
   java-21-openjdk \
   python3-wxpython4 \
   pipx \
-  wireshark
+  wireshark \
+  android-tools
 
 # Remove packages
 dnf5 -y remove \
