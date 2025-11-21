@@ -1,8 +1,8 @@
 ARG SOURCE_IMAGE="silverblue"
 ARG SOURCE_SUFFIX="-main"
 
-ARG SOURCE_TAG="43"
-ARG FEDORA_RELEASE="43"
+ARG SOURCE_TAG="gts"
+ARG FEDORA_RELEASE="gts"
 
 FROM scratch AS ctx
 COPY build_files /
