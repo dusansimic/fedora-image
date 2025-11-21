@@ -22,7 +22,7 @@ FONT_VERSION=3.4.0
 
 ## Download and install fonts
 
-mkdir /usr/local/share/fonts
+mkdir /usr/share/fonts
 download_and_unpack_font "CascadiaCode" $FONT_VERSION
 download_and_unpack_font "FiraCode" $FONT_VERSION
 download_and_unpack_font "AdwaitaMono" $FONT_VERSION
