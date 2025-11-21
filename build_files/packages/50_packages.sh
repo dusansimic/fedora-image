@@ -31,18 +31,6 @@ dnf5 -y install --allowerasing \
   VirtualBox \
   VirtualBox-extpack \
   vim-default-editor \
-  qemu-char-spice \
-  qemu-device-display-virtio-gpu \
-  qemu-device-display-virtio-vga \
-  qemu-device-usb-redirect \
-  qemu-img \
-  qemu-system-x86-core \
-  qemu-user-binfmt \
-  qemu-user-static \
-  qemu \
-  virt-manager \
-  virt-viewer \
-  virt-v2v \
   keyd \
   fira-code-fonts \
   awscli2 \
